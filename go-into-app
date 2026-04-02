@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+cd "$(dirname "$0")"
+
+if ! docker compose ps app --status running -q 2>/dev/null | grep -q .; then
+    echo "The app container is not running. Start it with: docker compose up -d" >&2
+    exit 1
+fi
+
+exec docker compose exec -it app bash

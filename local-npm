@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+cd "$(dirname "$0")"
+
+args=(run --rm)
+if [[ "${LOCAL_NPM_PORTS:-}" == 1 ]]; then
+    args+=(--service-ports)
+fi
+
+exec docker compose "${args[@]}" node npm "$@"
