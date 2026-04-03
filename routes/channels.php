@@ -7,6 +7,6 @@ Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
     return $user->id == $id;
 });
 
-Broadcast::channel('private', function ($user = null) {
+Broadcast::channel('private-share', function ($user = null) {
     return true;
 });

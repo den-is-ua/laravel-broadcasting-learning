@@ -7,8 +7,8 @@ window.Echo.channel('shared')
         console.log(e.status);
     });
 
-window.Echo.private('private')
-    .listen('CreatedPrivate', (e) => {
+window.Echo.private('private-share')
+    .listen('CreatedPrivateShare', (e) => {
         console.log(e.status);
     });
 

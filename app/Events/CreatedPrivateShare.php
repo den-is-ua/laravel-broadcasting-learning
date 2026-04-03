@@ -30,7 +30,7 @@ class CreatedPrivateShare implements ShouldBroadcastNow
     public function broadcastOn(): array
     {
         return [
-            new PrivateChannel('private'),
+            new PrivateChannel('private-share'),
         ];
     }
 }
