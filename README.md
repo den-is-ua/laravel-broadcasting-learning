@@ -11,6 +11,7 @@ This repository is a small Laravel app for learning **event broadcasting** (publ
 | `fire:public` | `{status}` | Dispatches `CreatedNotification` on the **public** channel. Watch the browser console after running it. |
 | `fire:private` | `{userId} {status}` | Dispatches `CreatedPrivate` on a **private** channel for that user. Log in as that user in the browser to receive it. |
 | `fire:private-share` | `{status}` | Dispatches `CreatedPrivateShare` (private channel flow used in this project). |
+| `fire:presense` | `{roomId}` | Dispatches `CreatedPresense` for the presence-room flow (`chat.{roomId}`). |
 | `inspire` | — | Built-in demo command: prints an inspiring quote in the terminal. |
 
 Examples:
@@ -19,6 +20,7 @@ Examples:
 php artisan fire:public "hello"
 php artisan fire:private 1 "update for user 1"
 php artisan fire:private-share "shared message"
+php artisan fire:presense 1
 php artisan inspire
 ```
 
