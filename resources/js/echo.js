@@ -15,5 +15,6 @@ if (key) {
         wsPort: import.meta.env.VITE_PUSHER_PORT,
         wssPort: import.meta.env.VITE_PUSHER_PORT,
         enabledTransports: ['ws', 'wss'],
+        withCredentials: true,
     });
 }
