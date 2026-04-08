@@ -12,9 +12,44 @@ window.Echo.private('private-share')
         console.log(e.status);
     });
 
-window.Echo.private(`App.Models.User.${userId}`)
+const echoUserChannel = `App.Models.User.${userId}`;
+
+window.Echo.private(echoUserChannel)
     .listen('CreatedPrivate', (e) => {
-        console.log(e.status);
+        console.info('CreatedPrivate', {
+            status: e.status,
+            userId: e.userId,
+        });
+    })
+    .listen('.PostCreated', (e) => {
+        console.info('PostCreated', {
+            postId: e.model?.id,
+            model: e.model,
+        });
+    })
+    .listen('.PostUpdated', (e) => {
+        console.info('PostUpdated', {
+            postId: e.model?.id,
+            model: e.model,
+        });
+    })
+    .listen('.PostSaved', (e) => {
+        console.info('PostSaved', {
+            postId: e.model?.id,
+            model: e.model ?? e,
+        });
+    })
+    .listen('.PostRetrieved', (e) => {
+        console.info('PostRetrieved', {
+            postId: e.model?.id,
+            model: e.model ?? e,
+        });
+    })
+    .listen('.PostDeleted', (e) => {
+        console.info('PostDeleted', {
+            postId: e.model?.id,
+            model: e.model ?? e,
+        });
     });
 
 
