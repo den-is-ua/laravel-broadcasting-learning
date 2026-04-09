@@ -53,9 +53,11 @@ window.Echo.private(echoUserChannel)
     });
 
 
-window.Echo.join(`chat.1`)
+const chatRoom = window.Echo.join(`chat.1`);
+
+chatRoom
     .here((users) => {
-         console.log(users);
+        console.log(users);
     })
     .joining((user) => {
         console.log(user.name);
@@ -65,4 +67,11 @@ window.Echo.join(`chat.1`)
     })
     .error((error) => {
         console.error(error);
+    })
+    .listenForWhisper('typing', (e) => {
+        console.log('typing: ' + e.userId);
     });
+
+document.getElementById('emit-typing-btn')?.addEventListener('click', () => {
+    chatRoom.whisper('typing', { userId });
+});

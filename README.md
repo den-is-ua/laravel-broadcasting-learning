@@ -28,6 +28,18 @@ php artisan inspire
 
 ---
 
+## Client events (whispers)
+
+Server-side Artisan commands are not involved here. The app subscribes to the **presence** channel `chat.1` via `Echo.join` in `resources/js/app.js` and listens for the client event `typing` with `listenForWhisper`.
+
+1. Log in and open the **Dashboard**.
+2. Click **Send typing whisper**. That calls `whisper('typing', { userId })` on the same presence channel subscription.
+3. Watch the browser console: other tabs or users in the same presence room should log the typing payload (and your own tab may log it too, depending on Pusher settings).
+
+**Requirements:** In the Pusher dashboard, **Enable client events** must be on for your app, or whispers will not be delivered.
+
+---
+
 ## Composer scripts
 
 | Command | Purpose |
