@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Events\CreatedNotification;
+use App\Events\CreatedPublic;
 use Illuminate\Console\Attributes\Description;
 use Illuminate\Console\Attributes\Signature;
 use Illuminate\Console\Command;
@@ -15,6 +15,6 @@ class FirePublic extends Command
      */
     public function handle()
     {
-        CreatedNotification::dispatch($this->argument('status'));
+        CreatedPublic::dispatch($this->argument('status'));
     }
 }
