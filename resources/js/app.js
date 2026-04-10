@@ -50,7 +50,10 @@ window.Echo.private(echoUserChannel)
             postId: e.model?.id,
             model: e.model ?? e,
         });
-    });
+    })
+    .notification((notification) => {
+        console.log(notification.message);
+    });;
 
 
 const chatRoom = window.Echo.join(`chat.1`);
